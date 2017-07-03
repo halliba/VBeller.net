@@ -7,7 +7,7 @@ namespace VBeller
     /// <summary>
     /// Represents a calendar week in a specific year.
     /// </summary>
-    public struct CalendarWeek
+    public struct CalendarWeek : IComparable<CalendarWeek>
     {
         /// <summary>
         /// Stores the <see cref="DateTimeFormatInfo"/> used for this <see cref="CalendarWeek"/>.
@@ -69,7 +69,7 @@ namespace VBeller
             if (year < DateTime.MinValue.Year || year > DateTime.MaxValue.Year)
                 throw new ArgumentOutOfRangeException(nameof(year));
 
-            if (week < 0 || week >
+            if (week < 1 || week >
                 _dfi.Calendar.GetWeekOfYear(new DateTime(year, 12, 31), _dfi.CalendarWeekRule, _dfi.FirstDayOfWeek))
                 throw new ArgumentOutOfRangeException(nameof(week));
 
@@ -121,7 +121,7 @@ namespace VBeller
         /// <returns></returns>
         public CalendarWeek AddWeeks(int weeks)
         {
-            return new CalendarWeek(FirstDay.AddDays(weeks * 7));
+            return new CalendarWeek(FirstDay.AddDays(weeks * 7), _dfi);
         }
 
         /// <summary>
@@ -142,6 +142,55 @@ namespace VBeller
         public static CalendarWeek operator -(CalendarWeek week, TimeSpan span)
         {
             return new CalendarWeek(week.FirstDay - span, week._dfi);
+        }
+
+        /// <summary>
+        /// Compares a <see cref="CalendarWeek"/> to another <see cref="CalendarWeek"/> values based.
+        /// </summary>
+        /// <param name="other">The <see cref="CalendarWeek"/> to compare to.</param>
+        /// <returns>-1 if <paramref name="other"/> is grater than this <see cref="CalendarWeek"/>.</returns>
+        public int CompareTo(CalendarWeek other)
+        {
+            var yearComparison = Year.CompareTo(other.Year);
+            if (yearComparison != 0) return yearComparison;
+            return Week.CompareTo(other.Week);
+        }
+
+        /// <summary>
+        /// Compares a <see cref="CalendarWeek"/> to this <see cref="CalendarWeek"/>.
+        /// </summary>
+        /// <param name="other">The <see cref="CalendarWeek"/> to compare to.</param>
+        /// <returns>True, if both <see cref="CalendarWeek"/> have the same values.</returns>
+        public bool Equals(CalendarWeek other)
+        {
+            return Equals(_dfi, other._dfi) && Year == other.Year && Week == other.Week;
+        }
+
+        /// <summary>
+        /// Compares a <see cref="object"/> to this <see cref="CalendarWeek"/>.
+        /// </summary>
+        /// <param name="obj">The <see cref="object"/> to compare to.</param>
+        /// <returns>True, if the <paramref name="obj"/> point to the same object or have the same values.</returns>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is CalendarWeek && Equals((CalendarWeek)obj);
+        }
+
+        /// <summary>
+        /// Calculates the hash code of this <see cref="CalendarWeek"/>.
+        /// Includes the <see cref="DateTimeFormatInfo"/>, <see cref="Year"/> and <see cref="Week"/> of this.
+        /// </summary>
+        /// <returns>The unique hash code of this <see cref="CalendarWeek"/>.</returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (_dfi != null ? _dfi.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Year;
+                hashCode = (hashCode * 397) ^ Week;
+                return hashCode;
+            }
         }
     }
 }
