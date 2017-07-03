@@ -7,7 +7,7 @@ namespace VBeller
     /// <summary>
     /// Represents a calendar week in a specific year.
     /// </summary>
-    public struct CalendarWeek : IComparable<CalendarWeek>
+    public struct CalendarWeek : IComparable<CalendarWeek>, IComparable<DateTime>
     {
         /// <summary>
         /// Stores the <see cref="DateTimeFormatInfo"/> used for this <see cref="CalendarWeek"/>.
@@ -154,6 +154,20 @@ namespace VBeller
             var yearComparison = Year.CompareTo(other.Year);
             if (yearComparison != 0) return yearComparison;
             return Week.CompareTo(other.Week);
+        }
+
+        /// <summary>
+        /// Compares the <see cref="CalendarWeek"/> to a <see cref="DateTime"/> value based.
+        /// </summary>
+        /// <param name="other">The <see cref="DateTime"/> to compare to.</param>
+        /// <returns>-1 if <paramref name="other"/> is greater than <see cref="LastDay"/>;
+        /// 1, if <paramref name="other"/> is smaller than <see cref="FirstDay"/>;
+        /// 0, if <paramref name="other"/> is in this <see cref="CalendarWeek"/>.</returns>
+        public int CompareTo(DateTime other)
+        {
+            if (other < FirstDay) return -1;
+            if (other > LastDay) return 1;
+            return 0;
         }
 
         /// <summary>
