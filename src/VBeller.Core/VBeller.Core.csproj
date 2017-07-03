@@ -3,6 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
     <RootNamespace>VBeller</RootNamespace>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/halliba/VBeller.net</PackageProjectUrl>
+    <Description>Personal C# and .net Repository containing utilities and some other stuff.
+
+.net Standard library containing c# and .net functionality.</Description>
+    <PackageLicenseUrl>https://github.com/halliba/VBeller.net/blob/master/LICENSE</PackageLicenseUrl>
+    <Authors>Valentin Beller (halliba)</Authors>
+    <Company>Valentin Beller Softwareentwicklung</Company>
   </PropertyGroup>
 
 </Project>
