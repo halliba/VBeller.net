@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBeller.Wpf", "src\VBeller.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBeller.Wpf.Controls", "src\VBeller.Wpf.Controls\VBeller.Wpf.Controls.csproj", "{9473D5F2-7BC0-4655-A9EC-AD3C1B7FADCE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B74EE47A-3A53-477A-91DB-43FBC77BAE7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C066DEA4-D067-43EC-B5AF-CCDA336AC106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBeller.Core.Tests", "tests\VBeller.Core.Tests\VBeller.Core.Tests.csproj", "{9A7F3BD1-0CFC-4CBA-9183-F43B45CD7461}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +33,18 @@ Global
 		{9473D5F2-7BC0-4655-A9EC-AD3C1B7FADCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9473D5F2-7BC0-4655-A9EC-AD3C1B7FADCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9473D5F2-7BC0-4655-A9EC-AD3C1B7FADCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A7F3BD1-0CFC-4CBA-9183-F43B45CD7461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A7F3BD1-0CFC-4CBA-9183-F43B45CD7461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A7F3BD1-0CFC-4CBA-9183-F43B45CD7461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A7F3BD1-0CFC-4CBA-9183-F43B45CD7461}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{66F8BD9E-2166-4625-9B4A-8BBCCCDACBDB} = {B74EE47A-3A53-477A-91DB-43FBC77BAE7B}
+		{A1251B5F-CE6B-4DE7-B4A4-4A34E5732205} = {B74EE47A-3A53-477A-91DB-43FBC77BAE7B}
+		{9473D5F2-7BC0-4655-A9EC-AD3C1B7FADCE} = {B74EE47A-3A53-477A-91DB-43FBC77BAE7B}
+		{9A7F3BD1-0CFC-4CBA-9183-F43B45CD7461} = {C066DEA4-D067-43EC-B5AF-CCDA336AC106}
 	EndGlobalSection
 EndGlobal
