@@ -5,6 +5,7 @@ namespace VBeller.Wpf.Input
 {
     /// <summary>
     /// Represents a <see cref="ICommand"/> implementation, that can be used vi delegates and lamda expressions.
+    /// <remarks>Based on: https://wpftutorial.net/DelegateCommand.html</remarks>
     /// </summary>
     public class DelegateCommand : ICommand
     {
