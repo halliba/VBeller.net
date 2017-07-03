@@ -6,6 +6,8 @@ Personal C# and .net Repository containing utilities and some other stuff.
 ### VBeller.Core
 .net Standard library containing c# and .net functionality.
 
+[Nuget Package](https://www.nuget.org/packages/VBeller.Core/)
+
 *.net standard version 1.3*
 
 ### VBeller.Wpf
